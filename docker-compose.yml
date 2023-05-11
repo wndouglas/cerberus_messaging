@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.15-management
+    container_name: cerberus_rabbitmq_management
+    hostname: cerberus-messaging
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+  java-project:
+    image: java-docker:latest
+    container_name: java_project
+    hostname: java_petclinic
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    build:
+      context: ./spring-petclinic
+      dockerfile: dockerfile
+
