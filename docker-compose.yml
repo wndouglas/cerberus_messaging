@@ -12,14 +12,3 @@ services:
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
-  java-project:
-    image: java-docker:latest
-    container_name: java_project
-    hostname: java_petclinic
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-    build:
-      context: ./spring-petclinic
-      dockerfile: dockerfile
-
