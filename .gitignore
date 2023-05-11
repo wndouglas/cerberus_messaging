@@ -1,6 +1,13 @@
 # Compiled class file
 *.class
 
+# IDE config files
+*.idea
+*.vscode
+
+# Build targets
+*target
+
 # Log file
 *.log
 
